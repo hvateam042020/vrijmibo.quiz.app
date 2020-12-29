@@ -1,0 +1,92 @@
+// Global SCSS styling
+// @see https://docs.nativescript.org/ui/styling
+
+$clr-primary: #fff;
+$clr-text-normal: #494949;
+$clr-background: #83ABE8;
+$clr-divider: #494949;
+$clr-toolbar-background: $clr-primary;
+
+$clr-quiz-red: #FF8080;
+$clr-quiz-blue: #8094FF;
+$clr-quiz-purple: #FC80FF;
+$clr-quiz-orange: #FFCC80;
+
+$clr-green: #8BEA83;
+$clr-red: #FF8080;
+$clr-blue: #8094FF;
+
+$radius-button: 10;
+$radius-textfield: 5;
+
+Button {
+  text-transform: none;
+}
+
+.page {
+  background-color: $clr-background;
+}
+
+.app-content {
+  padding: 0 20 0 20;
+}
+
+.toolbar {
+  background-color: $clr-toolbar-background;
+  height: 50;
+}
+
+.toolbar .title {
+  font-weight: bold;
+  font-size: 18;
+}
+
+.btn-toolbar-back {
+  font-size: 18;
+  padding: 0 0 0 5;
+}
+
+.btn-primary {
+  android-elevation: 2;
+  background-color: $clr-primary;
+  color: $clr-text-normal;
+
+  border-radius: $radius-button;
+  border-width: 0;
+
+  padding: 0;
+
+  text-align: center;
+}
+
+.et-primary {
+  android-elevation: 2;
+  background-color: $clr-primary;
+  color: $clr-text-normal;
+
+  border-radius: $radius-textfield;
+  border-width: 0;
+
+  padding: 0 5 0 5;
+}
+
+.txt-title {
+  font-size: 24;
+  font-weight: bold;
+  color: $clr-primary;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-fb {
+  height: 50;
+  width: 50;
+  border-radius: 25;
+  background-color: gray;
+}
+
+.divider {
+  width: 100%;
+  border-bottom-width: 1;
+  border-color: $clr-divider;
+}
