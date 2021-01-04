@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export class QuizController {
-  static API_URL = "https://51a3935b6ab0.ngrok.io"
+  static API_URL = "http://10.0.2.2:3000"
 
   /**
    * Recieve a quiz from api by id.
@@ -9,8 +9,6 @@ export class QuizController {
    */
   static getById(id, callback) {
     let url = QuizController.API_URL + "/quiz/" + id;
-
-    console.log(url);
 
     axios({
         url: url,
@@ -32,8 +30,6 @@ export class QuizController {
    */
   static getAll(callback) {
     let url = QuizController.API_URL + "/quiz/all";
-
-    console.log(url);
 
     axios({
         url: url,

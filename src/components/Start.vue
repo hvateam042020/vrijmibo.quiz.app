@@ -7,11 +7,11 @@
         <GridLayout row="1" col="0" columns="*,auto" rows="auto,*,auto" class="app-content">
           <Label row="0" col="0" colSpan="2"  class="txt-title" :text="title"/>
 
-          <ListView @itemTap="onQuizTapped" row="1" rowSpan="2" col="0" colSpan="2" for="quiz in quizzes" class="listview">
+          <ListView @itemTap="onQuizTapped" row="1" rowSpan="2" col="0" colSpan="2" for="(quiz, index) in quizzes" class="listview">
             <v-template>
               <!--Stacklayout to add margins-->
               <StackLayout marginBottom="10">
-                <QuizButton :id="quiz.id" :text="quiz.name"/>
+                <QuizButton :id="index" :text="quiz.name"/>
               </StackLayout>
             </v-template>
           </ListView>
@@ -27,6 +27,7 @@ import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
 import CreateQuizView from "./CreateQuizView.vue";
 import { QuizController } from "../REST/QuizController";
+import { Quiz } from "../models/Quiz";
 
   export default {
     data() {
@@ -48,7 +49,15 @@ import { QuizController } from "../REST/QuizController";
         QuizController.getAll(this.onQuizzesRetrieved);
       },
       onQuizzesRetrieved(result) {
-        console.log(result);
+        let quizzes = [];
+
+        // Mapping quizzes.
+        result.forEach(quiz => {
+          quizzes.push(new Quiz(quiz._id, quiz._name, quiz._questions));
+        });
+
+        // Storing quizzes in Veux.
+        this.$store.commit("setQuizzes", quizzes);
       }
     },
     components: {

@@ -62,6 +62,9 @@ export default new Vuex.Store({
   mutations: {
     setSelectedQuiz(state, selectedQuiz) {
       state.selectedQuiz = selectedQuiz;
+    },
+    setQuizzes(state, quizzes) {
+      state.quizzes = quizzes;
     }
   },
   actions: {
