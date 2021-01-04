@@ -11,7 +11,7 @@
             <v-template>
               <!--Stacklayout to add margins-->
               <StackLayout marginBottom="10">
-                <QuizButton :item="quiz"/>
+                <QuizButton :id="quiz.id" :text="quiz.name"/>
               </StackLayout>
             </v-template>
           </ListView>

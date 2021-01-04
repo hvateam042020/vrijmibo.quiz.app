@@ -14,7 +14,7 @@
             <v-template>
               <!--Stacklayout to add margins-->
               <StackLayout marginBottom="10">
-                
+                <QuizButton :id="question.id" :text="question.question"/>
               </StackLayout>
             </v-template>
           </ListView>
@@ -67,6 +67,7 @@ import QuizButton from "./QuizButton.vue";
     },
     computed: {
       questions() {
+        return this.quiz.questions;
         //return this.$store.state.quizzes[this.$store.state.selectedQuiz].questions;
       }
     }

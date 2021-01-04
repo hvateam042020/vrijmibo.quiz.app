@@ -1,25 +1,24 @@
 <template>
   <GridLayout class="btn-quiz" @loaded="onButtonLoaded" columns="auto,*" rows="*">
-    <Label row="0" col="0" class="label-index" :text="'#' + item.id"/>
-    <Label row="0" col="1" class="label-text" :text="item.name"/>
+    <Label row="0" col="0" class="label-index" :text="'#' + id"/>
+    <Label row="0" col="1" class="label-text" :text="text"/>
   </GridLayout>
 </template>
 
 <script>
 export default {
   props: {
-    item: Object,
+    id: String,
+    text: String,
     onLoadedEvent: Function
   },
   mounted() {},
   data() {
     return {
-      //hasBeenPressed: false
     };
   },
   methods: {
     onButtonLoaded() {
-      //this.hasBeenPressed = false;
       if (this.onLoadedEvent != null) this.onLoadedEvent();
     }
   },
