@@ -26,6 +26,7 @@
 import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
 import CreateQuizView from "./CreateQuizView.vue";
+import QuizView from "./QuizView.vue";
 
   export default {
     data() {
@@ -42,6 +43,7 @@ import CreateQuizView from "./CreateQuizView.vue";
       },
       onQuizTapped(evt) {
         this.$store.commit("setSelectedQuiz", evt.index);
+        this.$navigateTo(QuizView);
       }
     },
     components: {
