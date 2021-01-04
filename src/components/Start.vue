@@ -1,6 +1,6 @@
 <template>
     <Page actionBarHidden="true">
-      <GridLayout class="page" columns="*" rows="auto,*">
+      <GridLayout @loaded="onViewLoaded" class="page" columns="*" rows="auto,*">
         <Toolbar row="0" col="0" :title="headerTitle">
         </Toolbar>
 
@@ -26,6 +26,7 @@
 import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
 import CreateQuizView from "./CreateQuizView.vue";
+import { QuizController } from "../REST/QuizController";
 
   export default {
     data() {
@@ -42,6 +43,12 @@ import CreateQuizView from "./CreateQuizView.vue";
       },
       onQuizTapped(evt) {
         this.$store.commit("setSelectedQuiz", evt.index);
+      },
+      onViewLoaded() {
+        QuizController.getAll(this.onQuizzesRetrieved);
+      },
+      onQuizzesRetrieved(result) {
+        console.log(result);
       }
     },
     components: {
