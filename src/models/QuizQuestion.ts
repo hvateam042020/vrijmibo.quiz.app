@@ -8,8 +8,15 @@ export class QuizQuestion {
   answerC: String
   answerD: String
 
-  constructor () {
+  constructor (id, question, validAnswer, answerA, answerB, answerC, answerD) {
     // Todo: construct model
+    this.id = id;
+    this.question = question;
+    this.validAnswer = validAnswer;
+    this.answerA = answerA;
+    this.answerB = answerB;
+    this.answerC = answerC;
+    this.answerD = answerD;
   }
   
   /**

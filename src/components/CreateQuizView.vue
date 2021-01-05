@@ -40,7 +40,7 @@ import QuizButton from "./QuizButton.vue";
         backButton: "<--",
         quizNameHint: "Quiz name",
         publish: "publish quiz",
-        quiz: new Quiz()
+        quiz: new Quiz(0, "", [])
       }
     },
     methods: {

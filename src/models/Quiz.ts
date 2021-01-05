@@ -6,8 +6,10 @@ export class Quiz {
   name: String
   questions: Array<QuizQuestion>
 
-  constructor () {
-      // Todo: construct model
+  constructor (id, name, questions) {
+    this.id = id;
+    this.name = name;
+    this.questions = questions;
   }
 
   /**
