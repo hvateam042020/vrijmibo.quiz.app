@@ -28,6 +28,7 @@ import QuizButton from "./QuizButton.vue";
 import CreateQuizView from "./CreateQuizView.vue";
 import { QuizController } from "../REST/QuizController";
 import { Quiz } from "../models/Quiz";
+import QuizView from "./QuizView.vue";
 
   export default {
     data() {
@@ -44,6 +45,7 @@ import { Quiz } from "../models/Quiz";
       },
       onQuizTapped(evt) {
         this.$store.commit("setSelectedQuiz", evt.index);
+        this.$navigateTo(QuizView);
       },
       onViewLoaded() {
         QuizController.getAll(this.onQuizzesRetrieved);
