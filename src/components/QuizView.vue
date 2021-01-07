@@ -28,6 +28,7 @@ import StatisticsView from "./StatisticsView.vue";
       return {
         headerTitle: "Offline quiz",
         currentQuestionIndex: 0,
+        backButton: "<",
       }
     },
     methods: {
@@ -56,7 +57,10 @@ import StatisticsView from "./StatisticsView.vue";
         }
 
         this.currentQuestionIndex++;
-      }
+      },
+      onBackButtonPressed() {
+        this.$navigateBack();
+      },
     },
     components: {
       Toolbar

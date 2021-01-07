@@ -45,6 +45,7 @@ import { QuizController } from "../REST/QuizController";
         resultText: "",
         quizResults: [],
         isGettingQuizResults: true,
+        backButton: "<",
       }
     },
     methods: {
@@ -58,21 +59,26 @@ import { QuizController } from "../REST/QuizController";
         QuizController.postAnswers(postQuizAnswer, this.onGetQuizResultsCallback);
       },
       onGetQuizResultsCallback(result) {
+        this.quizResults = result.quizResult;
+        
+        this.isGettingQuizResults = false;
+        this.showResultText();
+      },
+      showResultText() {
         let correctCounter = 0;
-        result.quizResult.forEach(element => {
+        this.quizResults.forEach(element => {
           if(element.isValid) {
             correctCounter++;
           }
         });
-        this.quizResults = result.quizResult;
-
         this.resultText = "You got " + correctCounter + "\\" + this.quizResults.length + " correct!";
-
-        this.isGettingQuizResults = false;
       },
       onFinishButtonTapped() {
-        this.$navigateTo(Start);
-      }
+        this.$navigateTo(Start, { clearHistory: true });
+      },
+      onBackButtonPressed() {
+        this.$navigateTo(Start, { clearHistory: true });
+      },
     },
     components: {
       Toolbar,

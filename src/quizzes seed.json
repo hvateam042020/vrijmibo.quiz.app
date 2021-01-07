@@ -1,0 +1,169 @@
+[
+  {
+      "name": "JavaScript Quiz",
+      "questions": [
+          {
+              "question": "Welke kleur is het logo van JavaScript?",
+              "answerA": "geel",
+              "answerB": "rood",
+              "answerC": "groen",
+              "answerD": "blauw",
+              "validAnswer": "geel"
+          },
+          {
+              "question": "Wat is de afkorting van JavaScript?",
+              "answerA": "jsx",
+              "answerB": "jst",
+              "answerC": "jscript",
+              "answerD": "js",
+              "validAnswer": "js"
+          },
+          {
+              "question": "Werkt JavaScript in de browser?",
+              "answerA": "ja",
+              "answerB": "nee",
+              "answerC": "geen idee",
+              "answerD": "ja, maar dan moet het eerst worden omgezet in worden in html",
+              "validAnswer": "ja"
+          }
+      ]
+  },
+
+  {
+      "name": "landen & geografie",
+      "questions": [
+          {
+              "question": "Welke stad wordt ook wel sleutelstad genoemd?",
+              "answerA": "Amsterdam",
+              "answerB": "Leiden",
+              "answerC": "Haarlem",
+              "answerD": "Zwolle",
+              "validAnswer": "Leiden"
+          },
+          {
+              "question": "Aan hoeveel meren grenst Almere?",
+              "answerA": "2",
+              "answerB": "5",
+              "answerC": "3",
+              "answerD": "1",
+              "validAnswer": "3"
+          },
+          {
+              "question": "In welke provincie ligt het Nederlandse plaatsje America?",
+              "answerA": "Limburg",
+              "answerB": "Groningen",
+              "answerC": "Zuid-Holland",
+              "answerD": "Noord-Brabant",
+              "validAnswer": "Limburg"
+          },
+          {
+              "question": "Welke stad wordt bedoeld met 'de eeuwige stad'?",
+              "answerA": "Venetie",
+              "answerB": "New York",
+              "answerC": "Moscow",
+              "answerD": "Rome",
+              "validAnswer": "Rome"
+          },
+          {
+              "question": "Hoe heette het IJsselmeer vroeger?",
+              "answerA": "Groenmeer",
+              "answerB": "De Zuiderzee",
+              "answerC": "Het wet",
+              "answerD": "Noordzeekanaal",
+              "validAnswer": "De Zuiderzee"
+          }
+      ]
+  },
+
+  {
+      "name": "Bier",
+      "questions": [
+          {
+              "question": "Wat is in ieder geval na water (inc thee en koffie) de meest gedronken drank?",
+              "answerA": "Bier",
+              "answerB": "Linksgedraaide Fristi",
+              "answerC": "Wijn",
+              "answerD": "Coca Cola Zero",
+              "validAnswer": "Bier"
+          },
+          {
+              "question": "Wat is foodpairing?",
+              "answerA": "Je verwerkt bier in je gerecht",
+              "answerB": "Je combineerd wijn & bier",
+              "answerC": "Je maakt een passend gerecht bij bier",
+              "answerD": "Bier drinken met veel zoute nootjes",
+              "validAnswer": "Je maakt een passend gerecht bij bier"
+          },
+          {
+              "question": "Hoe komt rookbier aan zijn rokerige smaak?",
+              "answerA": "De mout wordt gebrand",
+              "answerB": "Bier wordt te drogen gehangen in rookhok",
+              "answerC": "Door kunstmatige toevoegingen",
+              "answerD": "Door toevoegen van gerookte kristallen",
+              "validAnswer": "De mout wordt gebrand"
+          },
+          {
+              "question": "Welke code zoek je op je flesje als je wilt weten hoe bitter een bier is?",
+              "answerA": "EBC",
+              "answerB": "AA",
+              "answerC": "ABV",
+              "answerD": "IBU",
+              "validAnswer": "IBU"
+          },
+          {
+              "question": "Hoe heet de oudste brouwerij ter wereld?",
+              "answerA": "Bavaria",
+              "answerB": "Bayerische Staatsbrauerei",
+              "answerC": "Weihenstephaner",
+              "answerD": "Westvleteren",
+              "validAnswer": "Bayerische Staatsbrauerei"
+          }
+      ]
+  },
+
+  {
+      "name": "techniek en wetenschap",
+      "questions": [
+          {
+              "question": "Door welk bedrijf is de Playstation ontwikkeld?",
+              "answerA": "Play Sation B.v",
+              "answerB": "Phillips",
+              "answerC": "Sony",
+              "answerD": "Microsoft",
+              "validAnswer": "Sony"
+          },
+          {
+              "question": "Hoe wordt de batterij genoemd in een horloge?",
+              "answerA": "A",
+              "answerB": "AAAA",
+              "answerC": "Ultracell",
+              "answerD": "Knoopcel",
+              "validAnswer": "Knoopcel"
+          },
+          {
+              "question": "2 audio kanalen noem je stereo. Hoe noem je 1 audio kanaal?",
+              "answerA": "Mono",
+              "answerB": "All surround",
+              "answerC": "Sterio",
+              "answerD": "Poly",
+              "validAnswer": "Mono"
+          },
+          {
+              "question": "Welke kleur heeft een robijn?",
+              "answerA": "Meerkleurig",
+              "answerB": "Paars",
+              "answerC": "Blauw",
+              "answerD": "Rood",
+              "validAnswer": "Rood"
+          },
+          {
+              "question": "Welk soort verbinding is vernoemd naar Harald Blauwtand?",
+              "answerA": "Wifi",
+              "answerB": "Bluetooth",
+              "answerC": "Draadloos",
+              "answerD": "USB",
+              "validAnswer": "Bluetooth"
+          }
+      ]
+  }
+]

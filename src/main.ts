@@ -5,6 +5,10 @@ import store from './store'
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')
 
+Vue.registerElement(
+  'PullToRefresh',
+  () => require('@nstudio/nativescript-pulltorefresh').PullToRefresh
+);
 
 new Vue({
   store,

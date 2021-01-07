@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@nativescript/core": "^7.0.3",
+    "@nstudio/nativescript-pulltorefresh": "^3.0.1",
     "axios": "^0.21.1",
     "nativescript-vue": "^2.8.1",
     "vuex": "^3.5.1"

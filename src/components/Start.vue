@@ -8,15 +8,16 @@
           <Label row="0" col="0" colSpan="2"  class="txt-title" :text="title"/>
 
           <ActivityIndicator :busy="isGettingQuizzes" v-show="isGettingQuizzes" height="50" width="50" row="1" rowSpan="2" col="0" colSpan="2"/>
-
-          <ListView @itemTap="onQuizTapped" row="1" rowSpan="2" col="0" colSpan="2" for="(quiz, index) in quizzes" class="listview">
-            <v-template>
-              <!--Stacklayout to add margins-->
-              <StackLayout marginBottom="10">
-                <QuizButton :id="index" :text="quiz.name"/>
-              </StackLayout>
-            </v-template>
-          </ListView>
+          <PullToRefresh row="1" rowSpan="2" col="0" colSpan="2" ref="pullToRefresh" @refresh="refreshList">
+            <ListView @itemTap="onQuizTapped" for="(quiz, index) in quizzes" class="listview">
+              <v-template>
+                <!--Stacklayout to add margins-->
+                <StackLayout marginBottom="10">
+                  <QuizButton :id="index" :text="quiz.name"/>
+                </StackLayout>
+              </v-template>
+            </ListView>
+          </PullToRefresh>
 
           <Button @tap="onFloatingButtonTapped($event)" text="+" class="btn-fb" row="2" col="1"/>
         </GridLayout>
@@ -54,6 +55,8 @@ import QuizView from "./QuizView.vue";
         QuizController.getAll(this.onQuizzesRetrieved);
       },
       onQuizzesRetrieved(result) {
+        this.$refs.pullToRefresh.nativeView.refreshing = false;
+        
         let quizzes = [];
 
         // Mapping quizzes.
@@ -65,6 +68,9 @@ import QuizView from "./QuizView.vue";
         this.$store.commit("setQuizzes", quizzes);
 
         this.isGettingQuizzes = false;
+      },
+      refreshList() {
+        QuizController.getAll(this.onQuizzesRetrieved);
       }
     },
     components: {
