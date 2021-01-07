@@ -7,8 +7,7 @@ export default new Vuex.Store({
   state: {
     selectedQuiz: 1,
 
-    // Todo: Retrieve quizzes from REST api and replace this mockup data.
-    quizzes: [
+    quizzes: [ /*
       {
         id: 0,
         name: "First quiz",
@@ -54,10 +53,11 @@ export default new Vuex.Store({
             answerC: "Third",
             answerD: "Fourth",
             validAnswer: "Fourth"
-          }
+          } 
         ],
-      }
-    ]
+      }*/
+    ],
+    givenAnswersInQuiz: [],
   },
   mutations: {
     setSelectedQuiz(state, selectedQuiz) {
@@ -65,6 +65,10 @@ export default new Vuex.Store({
     },
     setQuizzes(state, quizzes) {
       state.quizzes = quizzes;
+    },
+    addGivenAnswerInQuiz(state, answer) {
+      console.log("Adding answer: " + answer);
+      state.givenAnswersInQuiz.push(answer);
     }
   },
   actions: {

@@ -6,7 +6,7 @@
         </Toolbar>
 
         <GridLayout row="1" col="0" columns="*,*" rows="auto,*,*,*" class="app-content">
-          <Label row="0" col="0" colSpan="2"  class="txt-title" :text="question"/>
+          <Label textWrap="true" row="0" col="0" colSpan="2"  class="txt-title" :text="question"/>
           <Button @tap="onAnswerTapped('A')" class="answer-button a" row="1" col="0" :text="answerA"/>
           <Button @tap="onAnswerTapped('B')" class="answer-button b" row="1" col="1" :text="answerB"/>
           <Button @tap="onAnswerTapped('C')" class="answer-button c" row="2" col="0" :text="answerC"/>
@@ -21,6 +21,7 @@ import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
 import CreateQuizView from "./CreateQuizView.vue";
 import QuizView from "./QuizView.vue";
+import StatisticsView from "./StatisticsView.vue";
 
   export default {
     data() {
@@ -48,11 +49,9 @@ import QuizView from "./QuizView.vue";
           default:
         }
 
-        // TODO: Save given answer.
-        console.log("Given answer is:" + givenAnswer);
+        this.$store.commit("addGivenAnswerInQuiz", givenAnswer);
         if(this.currentQuestionIndex == this.selectedQuiz.questions.length-1) {
-          // TODO: navigate to score view.
-          console.log("Finished quiz");
+          this.$navigateTo(StatisticsView);
           return;
         }
 

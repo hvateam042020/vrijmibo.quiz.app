@@ -75,7 +75,7 @@ export class QuizController {
    */
   static postAnswers(postQuizAnswer, callback) {
     let url = QuizController.API_URL + "/result";
-
+    console.log(JSON.stringify(postQuizAnswer));
     axios({
         url: url,
         method: "POST",

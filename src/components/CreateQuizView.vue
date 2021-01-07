@@ -37,7 +37,7 @@ import QuizButton from "./QuizButton.vue";
       return {
         headerTitle: "Create quiz",
         title: "Your quiz",
-        backButton: "<--",
+        backButton: "<",
         quizNameHint: "Quiz name",
         publish: "publish quiz",
         quiz: new Quiz(null, "", [])
@@ -68,7 +68,6 @@ import QuizButton from "./QuizButton.vue";
     computed: {
       questions() {
         return this.quiz.questions;
-        //return this.$store.state.quizzes[this.$store.state.selectedQuiz].questions;
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <GridLayout class="btn-quiz" @loaded="onButtonLoaded" columns="auto,*" rows="*">
-    <Label row="0" col="0" class="label-index" :text="'#' + id"/>
+    <Label row="0" col="0" class="label-index" v-bind:class="{ green : isValid, red : (isValid != null && !isValid) }" :text="'#' + id"/>
     <Label row="0" col="1" class="label-text" :text="text"/>
   </GridLayout>
 </template>
@@ -10,7 +10,8 @@ export default {
   props: {
     id: String,
     text: String,
-    onLoadedEvent: Function
+    onLoadedEvent: Function,
+    isValid: null
   },
   mounted() {},
   data() {
@@ -52,5 +53,13 @@ export default {
 .label-text {
   padding: 15 0 15 10;
   color: $clr-text-normal;
+}
+
+.red {
+  background-color: $clr-red;
+}
+
+.green {
+  background-color: $clr-green;
 }
 </style>

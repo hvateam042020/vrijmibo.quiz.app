@@ -7,6 +7,8 @@
         <GridLayout row="1" col="0" columns="*,auto" rows="auto,*,auto" class="app-content">
           <Label row="0" col="0" colSpan="2"  class="txt-title" :text="title"/>
 
+          <ActivityIndicator :busy="isGettingQuizzes" v-show="isGettingQuizzes" height="50" width="50" row="1" rowSpan="2" col="0" colSpan="2"/>
+
           <ListView @itemTap="onQuizTapped" row="1" rowSpan="2" col="0" colSpan="2" for="(quiz, index) in quizzes" class="listview">
             <v-template>
               <!--Stacklayout to add margins-->
@@ -27,14 +29,15 @@ import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
 import CreateQuizView from "./CreateQuizView.vue";
 import { QuizController } from "../REST/QuizController";
-import { Quiz } from "../models/Quiz";
+import { Quiz } from "../models/quiz";
 import QuizView from "./QuizView.vue";
 
   export default {
     data() {
       return {
         headerTitle: "Start quiz",
-        title: "Select your quiz"
+        title: "Select your quiz",
+        isGettingQuizzes: true,
       }
     },
     methods: {
@@ -60,6 +63,8 @@ import QuizView from "./QuizView.vue";
 
         // Storing quizzes in Veux.
         this.$store.commit("setQuizzes", quizzes);
+
+        this.isGettingQuizzes = false;
       }
     },
     components: {
