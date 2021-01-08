@@ -11,9 +11,7 @@
           <TextField row="1" colSpan="2" v-model="quiz.name" :hint="quizNameHint" class="et-primary quiz-name"/>
 
 
-          <Button @tap="onPublishButtonTapped($event)" row="3" col="0" colSpan="2" :text="publish" class="btn-primary btn-publish"/>
-
-          <Button @tap="onFloatingButtonTapped($event)" text="+" class="btn-fb" row="3" col="1"/>
+          <Button @tap="onCreateButtonTapped($event)" row="3" col="0" colSpan="2" :text="createQuestion" class="btn-primary btn-publish"/>
         </GridLayout>
       </GridLayout>
     </Page>
@@ -29,10 +27,13 @@ import QuizButton from "./QuizButton.vue";
       return {
         headerTitle: "Create quiz question",
         title: "Your question",
+        createQuestion: "Create question",
       }
     },
     methods: {
+      onCreateButtonTapped() {
 
+      }
       
     },
     components: {

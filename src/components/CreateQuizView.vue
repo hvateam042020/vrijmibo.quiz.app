@@ -31,6 +31,7 @@
 import { Quiz } from "../models/quiz";
 import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
+import CreateQuizQuestionView from "./CreateQuizQuestionView.vue";
 
   export default {
     data() {
@@ -45,7 +46,7 @@ import QuizButton from "./QuizButton.vue";
     },
     methods: {
       onFloatingButtonTapped(evt) {
-        console.log("floating button pressed..");
+        this.$navigateTo(CreateQuizQuestionView);
       },
       onBackButtonPressed() {
         this.$navigateBack();
