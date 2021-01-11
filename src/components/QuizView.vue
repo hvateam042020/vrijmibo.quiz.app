@@ -100,20 +100,4 @@ import StatisticsView from "./StatisticsView.vue";
   color: white;
   android-elevation: 5;
 }
-
-.a {
-  background-color: $clr-quiz-red;
-}
-
-.b {
-  background-color: $clr-quiz-blue;
-}
-
-.c {
-  background-color: $clr-quiz-purple;
-}
-
-.d {
-  background-color: $clr-quiz-orange;
-}
 </style>

@@ -66,7 +66,7 @@ Button {
   border-radius: $radius-textfield;
   border-width: 0;
 
-  padding: 0 5 0 5;
+  padding: 10 5 10 5;
 }
 
 .txt-title {
@@ -89,4 +89,21 @@ Button {
   width: 100%;
   border-bottom-width: 1;
   border-color: $clr-divider;
+}
+
+
+.a {
+  background-color: $clr-quiz-red;
+}
+
+.b {
+  background-color: $clr-quiz-blue;
+}
+
+.c {
+  background-color: $clr-quiz-purple;
+}
+
+.d {
+  background-color: $clr-quiz-orange;
 }
