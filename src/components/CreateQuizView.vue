@@ -69,14 +69,14 @@ import CreateQuizQuestionView from "./CreateQuizQuestionView.vue";
       questions() {
         return this.$store.state.newQuiz.questions;
       },
-	  quiz() {
+	    quiz() {
         return this.$store.state.newQuiz;
-      }
+      },
     },
-	mounted: {
-	  var quiz = new Quiz(null, "", []);
-	  this.$store.commit("setNewQuiz", quiz);
-	}
+    mounted() {
+      let quiz = new Quiz(null, "", []);
+      this.$store.commit("setNewQuiz", quiz);
+    }
   }
 </script>
 

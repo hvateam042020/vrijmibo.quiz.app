@@ -32,6 +32,7 @@
 import { Quiz } from "../models/quiz";
 import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
+import { QuizQuestion } from "../models/quizquestion";
 
   export default {
     data() {
@@ -42,7 +43,7 @@ import QuizButton from "./QuizButton.vue";
         backButton: "<",
         quizNameHint: "Quiz question",
         quizAnswerHint: "Quiz answer",
-		quizQuestion: new QuizQuestion(null, "", "", "", "", "", ""),
+		    quizQuestion: new QuizQuestion(null, "", "", "", "", "", ""),
       }
     },
     methods: {
