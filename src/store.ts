@@ -58,6 +58,7 @@ export default new Vuex.Store({
       }*/
     ],
     givenAnswersInQuiz: [],
+	newQuiz: null,
   },
   mutations: {
     setSelectedQuiz(state, selectedQuiz) {
@@ -69,9 +70,17 @@ export default new Vuex.Store({
     addGivenAnswerInQuiz(state, answer) {
       console.log("Adding answer: " + answer);
       state.givenAnswersInQuiz.push(answer);
-    }
+    },
+	setNewQuiz(state, quiz){
+	  console.log("Adding new quiz");
+	  state.newQuiz = quiz;
+	},
+	addQuizQuestion(state, quizQuestion){
+	  console.log("Adding quizQuestion");
+	  state.newQuiz.questions.push(quizQuestion);
+	}
   },
   actions: {
-
+		
   }
 });

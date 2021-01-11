@@ -11,7 +11,7 @@
           <TextField row="1" colSpan="2" v-model="quiz.name" :hint="quizNameHint" class="et-primary quiz-name"/>
 
           <ListView @itemTap="onQuestionTapped" row="2" rowSpan="2" col="0" colSpan="2" for="question in quiz.questions" class="listview">
-            <v-template>
+            <v-template> 
               <!--Stacklayout to add margins-->
               <StackLayout marginBottom="10">
                 <QuizButton :id="question.id" :text="question.question"/>
@@ -41,7 +41,6 @@ import CreateQuizQuestionView from "./CreateQuizQuestionView.vue";
         backButton: "<",
         quizNameHint: "Quiz name",
         publish: "publish quiz",
-        quiz: new Quiz(null, "", [])
       }
     },
     methods: {
@@ -68,9 +67,16 @@ import CreateQuizQuestionView from "./CreateQuizQuestionView.vue";
     },
     computed: {
       questions() {
-        return this.quiz.questions;
+        return this.$store.state.newQuiz.questions;
+      },
+	  quiz() {
+        return this.$store.state.newQuiz;
       }
-    }
+    },
+	mounted: {
+	  var quiz = new Quiz(null, "", []);
+	  this.$store.commit("setNewQuiz", quiz);
+	}
   }
 </script>
 

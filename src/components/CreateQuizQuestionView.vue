@@ -5,22 +5,22 @@
           <Label class="btn-toolbar-back" :text="backButton" slot="left"/>
         </Toolbar>
 
-        <GridLayout row="6" col="0" columns="*" rows="auto,auto,auto,auto,auto,auto,auto,*" class="app-content">
+        <GridLayout row="1" col="0" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto" class="app-content">
           <Label row="0" col="0" colSpan="2"  class="txt-title" :text="title"/>
 
-          <TextField row="1" colSpan="2" v-model="quiz.name" :hint="quizNameHint" class="et-primary quiz-name"/>
+          <TextField row="1" colSpan="2" v-model="quizQuestion.question" :hint="quizNameHint" class="et-primary quiz-name"/>
           
-		  <Switch row="2" col="1" colSpan="1" checked="false" v-model="validAnswer"/>
-		  <TextField row="2" col="0" colSpan="2" v-model="quiz.answerA" :hint="quizAnswerHint" class="et-primary quiz-answer a"/>
+		  <Switch row="2" col="0" colSpan="1" ref="switchA" checked="false" @tap="onSwitchPressed('A')"/>
+		  <TextField row="2" col="1" colSpan="1" v-model="quizQuestion.answerA" :hint="quizAnswerHint" class="et-primary quiz-answer a"/>
 		  
-		  <Switch row="2" col="1" colSpan="1" checked="false" v-model="validAnswer"/>
-		  <TextField row="3" col="0" colSpan="2" v-model="quiz.answerB" :hint="quizAnswerHint" class="et-primary quiz-answer b"/>
+		  <Switch row="3" col="0" colSpan="1" ref="switchB" checked="false" @tap="onSwitchPressed('B')"/>
+		  <TextField row="3" col="1" colSpan="1" v-model="quizQuestion.answerB" :hint="quizAnswerHint" class="et-primary quiz-answer b"/>
 		  
-		  <Switch row="2" col="1" colSpan="1" checked="false" v-model="validAnswer"/>
-		  <TextField row="4" col="0" colSpan="2" v-model="quiz.answerC" :hint="quizAnswerHint" class="et-primary quiz-answer c"/>
+		  <Switch row="4" col="0" colSpan="1" ref="switchC" checked="false" @tap="onSwitchPressed('C')"/>
+		  <TextField row="4" col="1" colSpan="1" v-model="quizQuestion.answerC" :hint="quizAnswerHint" class="et-primary quiz-answer c"/>
 		  
-		  <Switch row="2" col="1" colSpan="1" checked="false" v-model="validAnswer"/>
-		  <TextField row="5" col="0" colSpan="2" v-model="quiz.answerD" :hint="quizAnswerHint" class="et-primary quiz-answer d"/>
+		  <Switch row="5" col="0" colSpan="1" ref="switchD" checked="false" @tap="onSwitchPressed('D')"/>
+		  <TextField row="5" col="1" colSpan="1" v-model="quizQuestion.answerD" :hint="quizAnswerHint" class="et-primary quiz-answer d"/>
           
 		  <Button @tap="onCreateButtonTapped($event)" row="6" col="0" colSpan="2" :text="createQuestion" class="btn-primary btn-publish"/>
         </GridLayout>
@@ -42,19 +42,49 @@ import QuizButton from "./QuizButton.vue";
         backButton: "<",
         quizNameHint: "Quiz question",
         quizAnswerHint: "Quiz answer",
-        quiz: new Quiz(null, "", [])
+		quizQuestion: new QuizQuestion(null, "", "", "", "", "", ""),
       }
     },
     methods: {
-      onCreateButtonTapped() {
+      onCreateButtonTapped() 
+	  {
+		this.$store.commit("addQuizQuestion", this.quizQuestion);
 		this.$navigateBack();
-      }
+      },onBackButtonPressed() {
+        this.$navigateBack();
+      },onSwitchPressed(answer){
+	  
+	  this.$refs.switchA.nativeView.checked = false;
+	  this.$refs.switchB.nativeView.checked = false;
+	  this.$refs.switchC.nativeView.checked = false;
+	  this.$refs.switchD.nativeView.checked = false;
+
+		switch(answer){
+			case 'A':
+				this.quizQuestion.validAnswer = this.quizQuestion.answerA;
+				this.$refs.switchA.nativeView.checked = true;
+			break;
+			case 'B':
+				this.quizQuestion.validAnswer = this.quizQuestion.answerB;
+				this.$refs.switchB.nativeView.checked = true;
+			break;
+			case 'C':
+				this.quizQuestion.validAnswer = this.quizQuestion.answerC;
+				this.$refs.switchC.nativeView.checked = true;
+			break;
+			case 'D':
+				this.quizQuestion.validAnswer = this.quizQuestion.answerD;
+				this.$refs.switchD.nativeView.checked = true;
+			break;
+		}
+	  }
       
     },
     components: {
       Toolbar
     },
     computed: {
+	
     }
   }
 </script>

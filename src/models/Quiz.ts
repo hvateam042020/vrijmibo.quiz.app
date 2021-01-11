@@ -2,9 +2,9 @@ import { QuizQuestion } from "./quizquestion"
 
 export class Quiz {
 
-  id: Number
-  name: String
-  questions: Array<QuizQuestion>
+  id: Number | null
+  name: String | null
+  questions: Array<QuizQuestion> | null
 
   constructor (id, name, questions) {
     this.id = id;
