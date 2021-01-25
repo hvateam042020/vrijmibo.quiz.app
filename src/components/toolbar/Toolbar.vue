@@ -9,8 +9,6 @@
     <StackLayout row="1" @tap="onRightButtonPressed" orientation="horizontal" col="2" class="header-button empty right">
       <slot name="right"/>
     </StackLayout>
-
-    <Label row="2" col="0" colSpan="3" class="divider"/>
   </GridLayout>
 </template>
 

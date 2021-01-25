@@ -72,17 +72,17 @@ export default new Vuex.Store({
       state.quizzes = quizzes;
     },
     addGivenAnswerInQuiz(state, answer) {
-      console.log("Adding answer: " + answer);
       state.givenAnswersInQuiz.push(answer);
     },
 	setNewQuiz(state, quiz){
-	  console.log("Adding new quiz");
 	  state.newQuiz = quiz;
 	},
 	addQuizQuestion(state, quizQuestion){
-	  console.log("Adding quizQuestion");
 	  state.newQuiz.questions.push(quizQuestion);
-	}
+  },
+  editQuizQuestion(state, questionResource) {
+      state.newQuiz.questions.splice(questionResource.index, 1, questionResource.question);
+  }
   },
   actions: {
 		

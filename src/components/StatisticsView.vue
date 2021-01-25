@@ -1,8 +1,8 @@
 <template>
     <Page actionBarHidden="true">
       <GridLayout @loaded="onViewLoaded" class="page" columns="*" rows="auto,*">
-        <Toolbar row="0" col="0" :leftTap="onBackButtonPressed" :title="headerTitle">
-          <Label class="btn-toolbar-back" :text="backButton" slot="left"/>
+        <Toolbar row="0" col="0"  :title="headerTitle">
+          
         </Toolbar>
 
         <GridLayout row="1" col="0" columns="*,*" rows="auto,auto,*,auto" class="app-content">
@@ -71,13 +71,14 @@ import { QuizController } from "../REST/QuizController";
             correctCounter++;
           }
         });
-        this.resultText = "You got " + correctCounter + "\\" + this.quizResults.length + " correct!";
+
+        this.resultText = `You got ${correctCounter}/${this.quizResults.length} correct`;
       },
       onFinishButtonTapped() {
-        this.$navigateTo(Start, { clearHistory: true });
+        this.$navigateTo(Start, { clearHistory: true,  });
       },
       onBackButtonPressed() {
-        this.$navigateTo(Start, { clearHistory: true });
+        this.$navigateTo(Start, { clearHistory: true,  });
       },
     },
     components: {

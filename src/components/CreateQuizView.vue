@@ -1,16 +1,16 @@
 <template>
     <Page actionBarHidden="true">
       <GridLayout class="page" columns="*" rows="auto,*">
-        <Toolbar row="0" col="0" :leftTap="onBackButtonPressed" :title="headerTitle">
-          <Label class="btn-toolbar-back" :text="backButton" slot="left"/>
+        <Toolbar row="0" col="0"  :title="headerTitle">
+          
         </Toolbar>
 
-        <GridLayout row="1" col="0" columns="*,auto" rows="auto,auto,*,auto" class="app-content">
-          <Label row="0" col="0" colSpan="2" class="txt-title" :text="title"/>
+        <GridLayout row="1" col="0" columns="auto,*,auto" rows="auto,auto,*,auto" class="app-content">
+          <Label row="0" col="0" colSpan="3" class="txt-title" :text="title"/>
 
-          <TextField row="1" colSpan="2" v-model="quiz.name" :hint="quizNameHint" class="et-primary quiz-name"/>
+          <TextField row="1" colSpan="3" v-model="quiz.name" :hint="quizNameHint" class="et-primary quiz-name"/>
 
-          <ListView @itemTap="onQuestionTapped" row="2" rowSpan="2" col="0" colSpan="2" for="(question, index) in quiz.questions" class="listview">
+          <ListView @itemTap="onQuestionTapped" row="2" rowSpan="2" col="0" colSpan="3" for="(question, index) in quiz.questions" class="listview">
             <v-template> 
               <!--Stacklayout to add margins-->
               <StackLayout marginBottom="10">
@@ -19,16 +19,16 @@
             </v-template>
           </ListView>
 
-          <Button @tap="onPublishButtonTapped($event)" row="3" col="0" colSpan="2" :text="publish" class="btn-primary btn-publish"/>
-
-          <Button @tap="onFloatingButtonTapped($event)" text="+" class="btn-fb" row="3" col="1"/>
+          <Button @tap="onPublishButtonTapped($event)" row="3" col="0" colSpan="3" :text="publish" class="btn-primary btn-publish"/>
+          
+          <Button @tap="onFloatingButtonTapped($event)" text="+" class="btn-fb" row="3" col="2"/>
         </GridLayout>
       </GridLayout>
     </Page>
 </template>
 
 <script lang="ts">
-import { QuizController } from "../REST/QuizController.ts";
+import { QuizController } from "../REST/QuizController";
 import { Quiz } from "../models/quiz";
 import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
@@ -41,22 +41,32 @@ import CreateQuizQuestionView from "./CreateQuizQuestionView.vue";
         title: "Your quiz",
         backButton: "<",
         quizNameHint: "Quiz name",
-        publish: "publish quiz",
+        publish: "publish quiz"
       }
     },
     methods: {
       onFloatingButtonTapped(evt) {
-        this.$navigateTo(CreateQuizQuestionView);
+        this.$navigateTo(CreateQuizQuestionView, {
+           
+        });
       },
       onBackButtonPressed() {
         this.$navigateBack();
       },
       onQuestionTapped(evt) {
+        this.$navigateTo(CreateQuizQuestionView, { props: {
+          editQuestion: this.questions[evt.index],
+          editQuestionIndex: evt.index
+        },
+         
+                    });
+
         //Todo
 		//Edit question
       },
       onPublishButtonTapped(evt) {
         console.log("On publish button tapped..");
+        console.log(this.quiz.isValid());
         if(this.quiz.isValid())
         {
 			//Todo

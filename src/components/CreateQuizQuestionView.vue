@@ -1,8 +1,8 @@
 <template>
     <Page actionBarHidden="true">
-      <GridLayout class="page" columns="*" rows="auto,*">
-        <Toolbar row="0" col="0" :leftTap="onBackButtonPressed" :title="headerTitle">
-          <Label class="btn-toolbar-back" :text="backButton" slot="left"/>
+      <GridLayout @loaded="onLayoutLoaded" class="page" columns="*" rows="auto,*">
+        <Toolbar row="0" col="0"  :title="headerTitle">
+          
         </Toolbar>
 
         <GridLayout row="1" col="0" columns="50, *" rows="auto,auto,auto,auto,auto,auto,auto" class="app-content">
@@ -46,29 +46,67 @@ import { QuizQuestion } from "../models/quizquestion";
 		    quizQuestion: new QuizQuestion(null, "", "", "", "", "", ""),
       }
     },
+    props: {
+      editQuestion: Object,
+      editQuestionIndex: Number
+    },
     methods: {
+      onLayoutLoaded() {
+        if(this.editQuestion != null && this.editQuestionIndex != null) {
+          this.quizQuestion = this.editQuestion;
+          this.checkValidAnswer();
+          this.createQuestion = "Edit question";
+        }
+      },
+      checkValidAnswer() {
+        switch(this.quizQuestion.validAnswer) {
+          case this.quizQuestion.answerA: 
+            this.$refs.switchA.nativeView.checked = true;
+          break;
+          case this.quizQuestion.answerB: 
+            this.$refs.switchB.nativeView.checked = true;
+          break;
+          case this.quizQuestion.answerC: 
+            this.$refs.switchC.nativeView.checked = true;
+          break;
+          case this.quizQuestion.answerD: 
+            this.$refs.switchD.nativeView.checked = true;
+          break;
+        }
+      },
       onCreateButtonTapped() 
-	  {
-		this.$store.commit("addQuizQuestion", this.quizQuestion);
-		this.$navigateBack();
-      },onBackButtonPressed() {
+      {
+        if(this.editQuestionIndex != null)
+        {
+          this.$store.commit("editQuizQuestion", { question:this.quizQuestion, index:this.editQuestionIndex });
+          this.$navigateBack();
+          return;
+        }
+        this.$store.commit("addQuizQuestion", this.quizQuestion);
         this.$navigateBack();
-      },onSwitchPressed(answer){
-
-		switch(answer){
-			case 'A':
-				this.quizQuestion.validAnswer = this.quizQuestion.answerA;
-			break;
-			case 'B':
-				this.quizQuestion.validAnswer = this.quizQuestion.answerB;
-			break;
-			case 'C':
-				this.quizQuestion.validAnswer = this.quizQuestion.answerC;
-			break;
-			case 'D':
-				this.quizQuestion.validAnswer = this.quizQuestion.answerD;
-			break;
-		}
+      },
+      onBackButtonPressed() {
+        this.$navigateBack();
+      },
+      onSwitchPressed(answer){
+        this.$refs.switchA.nativeView.checked = false;
+        this.$refs.switchB.nativeView.checked = false;
+        this.$refs.switchC.nativeView.checked = false;
+        this.$refs.switchD.nativeView.checked = false;
+        switch(answer){
+          case 'A':
+            this.quizQuestion.validAnswer = this.quizQuestion.answerA;
+          break;
+          case 'B':
+            this.quizQuestion.validAnswer = this.quizQuestion.answerB;
+          break;
+          case 'C':
+            this.quizQuestion.validAnswer = this.quizQuestion.answerC;
+          break;
+          case 'D':
+            this.quizQuestion.validAnswer = this.quizQuestion.answerD;
+          break;
+        }
 	  }
       
     },

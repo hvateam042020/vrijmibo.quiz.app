@@ -45,11 +45,15 @@ import QuizView from "./QuizView.vue";
       onFloatingButtonTapped(evt) {
         
         // Navigation
-        this.$navigateTo(CreateQuizView);
+        this.$navigateTo(CreateQuizView, {
+          
+        });
       },
       onQuizTapped(evt) {
         this.$store.commit("setSelectedQuiz", evt.index);
-        this.$navigateTo(QuizView);
+        this.$navigateTo(QuizView, {
+          
+        });
       },
       onViewLoaded() {
         QuizController.getAll(this.onQuizzesRetrieved);
