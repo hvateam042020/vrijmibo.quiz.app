@@ -58,7 +58,11 @@ export default new Vuex.Store({
       }*/
     ],
     givenAnswersInQuiz: [],
-	newQuiz: null,
+	newQuiz: {
+        id: null,
+        name: "",
+        questions: [],
+      },
   },
   mutations: {
     setSelectedQuiz(state, selectedQuiz) {

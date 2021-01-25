@@ -10,16 +10,16 @@
 
           <TextField row="1" colSpan="2" v-model="quizQuestion.question" :hint="quizNameHint" class="et-primary quiz-name"/>
           
-		  <Switch row="2" col="0" colSpan="1" ref="switchA" checked="false" @tap="onSwitchPressed('A')"/>
+		  <Switch row="2" col="0" colSpan="1" ref="switchA" @tap="onSwitchPressed('A')"/>
 		  <TextField row="2" col="1" colSpan="1" v-model="quizQuestion.answerA" :hint="quizAnswerHint" class="et-primary quiz-answer a"/>
 		  
-		  <Switch row="3" col="0" colSpan="1" ref="switchB" checked="false" @tap="onSwitchPressed('B')"/>
+		  <Switch row="3" col="0" colSpan="1" ref="switchB" @tap="onSwitchPressed('B')"/>
 		  <TextField row="3" col="1" colSpan="1" v-model="quizQuestion.answerB" :hint="quizAnswerHint" class="et-primary quiz-answer b"/>
 		  
-		  <Switch row="4" col="0" colSpan="1" ref="switchC" checked="false" @tap="onSwitchPressed('C')"/>
+		  <Switch row="4" col="0" colSpan="1" ref="switchC" @tap="onSwitchPressed('C')"/>
 		  <TextField row="4" col="1" colSpan="1" v-model="quizQuestion.answerC" :hint="quizAnswerHint" class="et-primary quiz-answer c"/>
 		  
-		  <Switch row="5" col="0" colSpan="1" ref="switchD" checked="false" @tap="onSwitchPressed('D')"/>
+		  <Switch row="5" col="0" colSpan="1" ref="switchD" @tap="onSwitchPressed('D')"/>
 		  <TextField row="5" col="1" colSpan="1" v-model="quizQuestion.answerD" :hint="quizAnswerHint" class="et-primary quiz-answer d"/>
           
 		  <Button @tap="onCreateButtonTapped($event)" row="6" col="0" colSpan="2" :text="createQuestion" class="btn-primary btn-publish"/>
@@ -54,28 +54,19 @@ import { QuizQuestion } from "../models/quizquestion";
       },onBackButtonPressed() {
         this.$navigateBack();
       },onSwitchPressed(answer){
-	  
-	  this.$refs.switchA.nativeView.checked = false;
-	  this.$refs.switchB.nativeView.checked = false;
-	  this.$refs.switchC.nativeView.checked = false;
-	  this.$refs.switchD.nativeView.checked = false;
 
 		switch(answer){
 			case 'A':
 				this.quizQuestion.validAnswer = this.quizQuestion.answerA;
-				this.$refs.switchA.nativeView.checked = true;
 			break;
 			case 'B':
 				this.quizQuestion.validAnswer = this.quizQuestion.answerB;
-				this.$refs.switchB.nativeView.checked = true;
 			break;
 			case 'C':
 				this.quizQuestion.validAnswer = this.quizQuestion.answerC;
-				this.$refs.switchC.nativeView.checked = true;
 			break;
 			case 'D':
 				this.quizQuestion.validAnswer = this.quizQuestion.answerD;
-				this.$refs.switchD.nativeView.checked = true;
 			break;
 		}
 	  }

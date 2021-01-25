@@ -17,10 +17,6 @@ export class Quiz {
    * Returns true if quiz is correctly filled in; otherwise false.
    */
   isValid() {
-    if(!this.id)
-    {
-      return false;
-    }
     if(!this.name || this.name.length == 0)
     {
       return false;

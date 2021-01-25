@@ -16,7 +16,7 @@ export class QuizController {
         headers: { "Content-Type": "application/json" }
     }).then(response => {
         var result = response.data;
-
+		console.log(response);
         if(callback != null)
           callback(result);
     }, error => {
@@ -37,7 +37,7 @@ export class QuizController {
         headers: { "Content-Type": "application/json" }
     }).then(response => {
         var result = response.data;
-
+		console.log(response);
         if(callback != null)
           callback(result);
     }, error => {
@@ -60,7 +60,7 @@ export class QuizController {
         data: JSON.stringify(quiz)
     }).then(response => {
         var result = response.data;
-
+		console.log(response);
         if(callback != null)
           callback(result);
     }, error => {
@@ -83,7 +83,7 @@ export class QuizController {
         data: JSON.stringify(postQuizAnswer)
     }).then(response => {
         var result = response.data;
-
+		console.log(response);
         if(callback != null)
           callback(result);
     }, error => {
@@ -105,7 +105,7 @@ export class QuizController {
         headers: { "Content-Type": "application/json" }
     }).then(response => {
         var result = response.data;
-
+		console.log(response);
         if(callback != null)
           callback(result);
     }, error => {

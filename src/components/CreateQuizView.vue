@@ -6,15 +6,15 @@
         </Toolbar>
 
         <GridLayout row="1" col="0" columns="*,auto" rows="auto,auto,*,auto" class="app-content">
-          <Label row="0" col="0" colSpan="2"  class="txt-title" :text="title"/>
+          <Label row="0" col="0" colSpan="2" class="txt-title" :text="title"/>
 
           <TextField row="1" colSpan="2" v-model="quiz.name" :hint="quizNameHint" class="et-primary quiz-name"/>
 
-          <ListView @itemTap="onQuestionTapped" row="2" rowSpan="2" col="0" colSpan="2" for="question in quiz.questions" class="listview">
+          <ListView @itemTap="onQuestionTapped" row="2" rowSpan="2" col="0" colSpan="2" for="(question, index) in quiz.questions" class="listview">
             <v-template> 
               <!--Stacklayout to add margins-->
               <StackLayout marginBottom="10">
-                <QuizButton :id="question.id" :text="question.question"/>
+                <QuizButton :id="index" :text="question.question"/>
               </StackLayout>
             </v-template>
           </ListView>
@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts">
+import { QuizController } from "../REST/QuizController.ts";
 import { Quiz } from "../models/quiz";
 import Toolbar from "./toolbar/Toolbar.vue";
 import QuizButton from "./QuizButton.vue";
@@ -51,13 +52,16 @@ import CreateQuizQuestionView from "./CreateQuizQuestionView.vue";
         this.$navigateBack();
       },
       onQuestionTapped(evt) {
-        console.log(evt.index);
+        //Todo
+		//Edit question
       },
       onPublishButtonTapped(evt) {
         console.log("On publish button tapped..");
         if(this.quiz.isValid())
         {
-          // Validation correct create quiz.
+			//Todo
+			//publish question
+			QuizController.createQuiz(this.quiz, this.$navigateBack);
         }
       }
     },

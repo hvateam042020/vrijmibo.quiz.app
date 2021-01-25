@@ -24,10 +24,6 @@ export class QuizQuestion {
    * Returns true if quiz is correctly filled in; otherwise false.
    */
   isValid() {
-    if(!this.id)
-    {
-      return false;
-    }
     if(!this.question || this.question.length == 0)
     {
       return false;
