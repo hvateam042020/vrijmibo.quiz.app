@@ -59,6 +59,8 @@ import { QuizController } from "../REST/QuizController";
         QuizController.postAnswers(postQuizAnswer, this.onGetQuizResultsCallback);
       },
       onGetQuizResultsCallback(result) {
+        this.$store.commit("resetQuizAnswers");
+
         this.quizResults = result.quizResult;
         
         this.isGettingQuizResults = false;

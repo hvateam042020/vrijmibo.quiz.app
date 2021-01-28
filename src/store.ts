@@ -74,15 +74,18 @@ export default new Vuex.Store({
     addGivenAnswerInQuiz(state, answer) {
       state.givenAnswersInQuiz.push(answer);
     },
-	setNewQuiz(state, quiz){
-	  state.newQuiz = quiz;
-	},
-	addQuizQuestion(state, quizQuestion){
-	  state.newQuiz.questions.push(quizQuestion);
-  },
-  editQuizQuestion(state, questionResource) {
-      state.newQuiz.questions.splice(questionResource.index, 1, questionResource.question);
-  }
+    setNewQuiz(state, quiz){
+      state.newQuiz = quiz;
+    },
+    addQuizQuestion(state, quizQuestion){
+      state.newQuiz.questions.push(quizQuestion);
+    },
+    editQuizQuestion(state, questionResource) {
+        state.newQuiz.questions.splice(questionResource.index, 1, questionResource.question);
+    },
+    resetQuizAnswers(state) {
+      state.givenAnswersInQuiz = [];
+    }
   },
   actions: {
 		
